@@ -1,7 +1,14 @@
 // Ask the user for their choice: rock, paper, or scissors
 
-let playerChoice;
+let playerChoice = prompt('Choose: Rock, Paper, or Scissors');
+console.log(playerChoice.toLowerCase());
+const computerChoice = getComputerChoice();
 
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice.toLowerCase === computerChoice) {
+        return `Tie! ${playerChoice} ties with ${computerChoice}`;
+    }
+}
 
 //Generate the computers choice: rock, paper, or scissors
     //Generate a number between 0 to 2
@@ -9,8 +16,6 @@ let playerChoice;
         //Assign 1 to paper
         //Assign 2 to scissors
 //Assign the result to variable computerChoice
-
-let computerChoice = getComputerChoice();
 
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * 3);
