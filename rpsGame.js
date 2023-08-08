@@ -1,17 +1,6 @@
 // Ask the user for their choice: rock, paper, or scissors
-//Generate the computers choice: rock, paper, or scissors
-//Evaluate the choice hierarchy:
-    //Rock beats scissors
-    //Scissors beats paper
-    //Paper beats rock
-//Compare user and computers move choice
-    //Determine winner
-//State who has won or if there is a tie
-//Display the chosen moves of both the user and computer
-//Prompt the user if they would like to play again:
-//If no: end the program
-//If yes: clear the console and run again
 
+let playerChoice;
 
 
 //Generate the computers choice: rock, paper, or scissors
@@ -19,9 +8,8 @@
         //Assign 0 to rock
         //Assign 1 to paper
         //Assign 2 to scissors
+//Assign the result to variable computerChoice
 
-
-let playerChoice;
 let computerChoice = getComputerChoice();
 
 function getComputerChoice() {
@@ -36,6 +24,12 @@ function getComputerChoice() {
     }
 }
 
-
-
 console.log(computerChoice);
+
+//Compare user and computers move choice
+    //Determine winner
+//State who has won or if there is a tie
+//Display the chosen moves of both the user and computer
+//Prompt the user if they would like to play again:
+//If no: end the program
+//If yes: clear the console and run again
