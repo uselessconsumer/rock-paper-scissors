@@ -6,15 +6,31 @@ const computerChoice = getComputerChoice();
 
 
 function playRound(playerChoice, computerChoice) {
+
     if (playerChoice.toLowerCase().trim() === computerChoice) {
         return `Tie! ${playerChoice} ties with ${computerChoice}.`;
+
     } else if (playerChoice.toLowerCase().trim() === 'rock') {
         if (computerChoice === 'paper') {
             return 'You lose! Paper beats rock.';
         } else if (computerChoice === 'scissors'); {
             return 'You win! Rock beats scissors';
         }
-    } 
+
+    } else if (playerChoice.toLowerCase().trim() === 'paper') {
+        if (computerChoice === 'rock') {
+            return 'You win! Paper beats rock.';
+        } else if (computerChoice === 'scissors'); {
+            return 'You lose! Scissors beats paper.';
+        }
+
+    } else if (playerChoice.toLowerCase().trim() === 'scissors') {
+        if (computerChoice === 'rock') {
+            return 'You lose! Rock beats scissors.';
+        } else if (computerChoice === 'paper'); {
+            return 'You win! Scissors beat paper.';
+        }
+    }
 }
 
 // rock paper
