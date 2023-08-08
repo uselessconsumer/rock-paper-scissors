@@ -1,14 +1,28 @@
 // Ask the user for their choice: rock, paper, or scissors
 
 let playerChoice = prompt('Choose: Rock, Paper, or Scissors');
-console.log(playerChoice.toLowerCase());
+console.log(playerChoice.toLowerCase().trim());
 const computerChoice = getComputerChoice();
 
+
 function playRound(playerChoice, computerChoice) {
-    if (playerChoice.toLowerCase === computerChoice) {
-        return `Tie! ${playerChoice} ties with ${computerChoice}`;
-    }
+    if (playerChoice.toLowerCase().trim() === computerChoice) {
+        return `Tie! ${playerChoice} ties with ${computerChoice}.`;
+    } else if (playerChoice.toLowerCase().trim() === 'rock') {
+        if (computerChoice === 'paper') {
+            return 'You lose! Paper beats rock.';
+        } else if (computerChoice === 'scissors'); {
+            return 'You win! Rock beats scissors';
+        }
+    } 
 }
+
+// rock paper
+// rock scissors
+// paper rock
+// paper scissors
+// scissors rock
+// scissors paper
 
 //Generate the computers choice: rock, paper, or scissors
     //Generate a number between 0 to 2
