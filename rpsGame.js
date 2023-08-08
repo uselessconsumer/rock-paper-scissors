@@ -20,8 +20,9 @@
         //Assign 1 to paper
         //Assign 2 to scissors
 
-let computerChoice;
+
 let playerChoice;
+let computerChoice = getComputerChoice();
 
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * 3);
@@ -35,7 +36,6 @@ function getComputerChoice() {
     }
 }
 
-function playGame() {
 
-}
-console.log(getComputerChoice());
+
+console.log(computerChoice);
