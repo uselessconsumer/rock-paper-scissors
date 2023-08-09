@@ -1,17 +1,9 @@
-
-
-// Ask the user for their choice: rock, paper, or scissors
-//Compare user and computers move choice
-    //Determine winner
-//State who has won or if there is a tie
-
 //Play a best of 5 game that keeps score and reports a winner or loser at the end.
     //If player wins the round, add 1 to the players score
     //If computer wins the round, add 1 to the computers score
     //If there is a tie, play again.
-
-
 game();
+
 function game() {
 
     //Generate the computers choice: rock, paper, or scissors
@@ -40,7 +32,7 @@ function game() {
 
     //Sets the round and scores to 0
     //If the player score and computer score are less than 3, keep playing
-    //
+    //Once a score of 3 is reached by the computer or player end the loop
     for (roundCount = 0, playerWin = 0, computerWin = 0
         ; roundCount < 5 && playerWin < 3 && computerWin < 3
         ; ) {
@@ -51,11 +43,12 @@ function game() {
         console.log('Player wins: ' + playerWin)
         console.log('Computer win: ' + computerWin)
 
-        //Ask the user for their move and determine winner of round against computers move
+        //Ask the user for their move and generate computers move
+        //Determine the winner of the round
         function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
                  , computerChoice = getComputerChoice()) {
 
-
+            //If there is a draw
             if (playerChoice === computerChoice) {
                 return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
 
@@ -95,10 +88,9 @@ function game() {
             } else {
                 return 'Please enter a valid move.'
             }
-            }
-
-
         }
+
+    }
 }
 
 
