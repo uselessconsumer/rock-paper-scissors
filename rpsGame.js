@@ -25,30 +25,67 @@ function getComputerChoice() {
     //Determine winner
 //State who has won or if there is a tie
 
+//Play a best of 5 game that keeps score and reports a winner or loser at the end.
+    //If player wins the round, add 1 to the players score
+    //If computer wins the round, add 1 to the computers score
+    //If there is a tie, play again.
+
+function game() {
+
+    var roundCount;
+    var playerWin;
+    var computerWin;
+
+    //Sets the round and scores to 0
+    //If the player score and computer score are less than 3, keep playing
+    //
+    for (roundCount = 0, playerWin = 0, computerWin = 0
+        ; roundCount >= 5 || playerWin === 3 || computerWin === 3
+        ; ) {
+        
+        playRound();
+
+        if () {
+
+        }
+
+    }
+}
+
 function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
-         , computerChoice = getComputerChoice()) {
+         , computerChoice = 'paper') {
+
+    var playerPoint = 0;
+    var computerPoint = 0;
 
     if (playerChoice === computerChoice) {
         return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
 
     } else if (playerChoice === 'rock') {
         if (computerChoice === 'paper') {
-            return 'You lose! Paper beats rock.';
+            computerPoint++;
+            return 'You lose! Paper beats rock.'; 
+            
         } else if (computerChoice === 'scissors'); {
+            playerPoint++;
             return 'You win! Rock beats scissors';
         }
 
     } else if (playerChoice === 'paper') {
         if (computerChoice === 'rock') {
+            playerPoint++;
             return 'You win! Paper beats rock.';
         } else if (computerChoice === 'scissors'); {
+            computerPoint++;
             return 'You lose! Scissors beats paper.';
         }
 
     } else if (playerChoice === 'scissors') {
         if (computerChoice === 'rock') {
+            computerPoint++;
             return 'You lose! Rock beats scissors.';
         } else if (computerChoice === 'paper'); {
+            playerPoint++;
             return 'You win! Scissors beat paper.';
         }
     } else {
