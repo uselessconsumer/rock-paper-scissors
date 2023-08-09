@@ -51,6 +51,8 @@ function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toL
         } else if (computerChoice === 'paper'); {
             return 'You win! Scissors beat paper.';
         }
+    } else {
+        return 'Please enter a valid move.'
     }
 }
 
