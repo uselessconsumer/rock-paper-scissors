@@ -39,6 +39,7 @@ function game() {
         
 
         console.log(playRound());
+        console.clear();
         console.log('Round number: ' + roundCount)
         console.log('Player wins: ' + playerWin)
         console.log('Computer win: ' + computerWin)
@@ -91,6 +92,12 @@ function game() {
         }
 
     }
+
+    //Display a message to the user stating wether they won or lost the BO5
+    let finalWinner = (playerWin === 3)
+    ? console.log('Congratulations! You beat the computer!')
+    : console.log('You lost! Better luck next time.');    
+    
 }
 
 
