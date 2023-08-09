@@ -1,17 +1,10 @@
 //Play a best of 5 game that keeps score and reports a winner or loser at the end.
-    //If player wins the round, add 1 to the players score
-    //If computer wins the round, add 1 to the computers score
-    //If there is a tie, play again.
+
 game();
 
 function game() {
 
     //Generate the computers choice: rock, paper, or scissors
-    //Generate a number between 0 to 2
-        //Assign 0 to rock
-        //Assign 1 to paper
-        //Assign 2 to scissors
-    //Assign the result to variable computerChoice
 
     function getComputerChoice() {
         let randomChoice = Math.floor(Math.random() * 3);
