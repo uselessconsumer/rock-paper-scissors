@@ -1,7 +1,5 @@
-// Ask the user for their choice: rock, paper, or scissors
 
-let playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim();
-const computerChoice = getComputerChoice();
+
 console.log(playRound());
 
 //Generate the computers choice: rock, paper, or scissors
@@ -22,15 +20,16 @@ function getComputerChoice() {
         return 'scissors';
     }
 }
-
+// Ask the user for their choice: rock, paper, or scissors
 //Compare user and computers move choice
     //Determine winner
 //State who has won or if there is a tie
 
-function playRound(playerChoice, computerChoice) {
+function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
+         , computerChoice = getComputerChoice()) {
 
     if (playerChoice === computerChoice) {
-        return `Draw! ${playerChoice} ties with ${computerChoice}.`;
+        return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
 
     } else if (playerChoice === 'rock') {
         if (computerChoice === 'paper') {
