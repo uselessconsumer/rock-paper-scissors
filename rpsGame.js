@@ -2,6 +2,7 @@
 
 let playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim();
 const computerChoice = getComputerChoice();
+console.log(playRound());
 
 //Generate the computers choice: rock, paper, or scissors
     //Generate a number between 0 to 2
