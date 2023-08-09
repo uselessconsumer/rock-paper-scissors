@@ -32,16 +32,16 @@ function game() {
         
 
         console.log(playRound());
-        console.clear();
-        console.log('Round number: ' + roundCount)
-        console.log('Player wins: ' + playerWin)
-        console.log('Computer win: ' + computerWin)
+        console.log('Round number: ' + roundCount);
+        console.log('Player wins: ' + playerWin);
+        console.log('Computer win: ' + computerWin);
+
 
         //Ask the user for their move and generate computers move
         //Determine the winner of the round
         function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
                  , computerChoice = getComputerChoice()) {
-
+        console.clear();
             //If there is a draw
             if (playerChoice === computerChoice) {
                 return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
@@ -88,14 +88,7 @@ function game() {
 
     //Display a message to the user stating wether they won or lost the BO5
     let finalWinner = (playerWin === 3)
-    ? console.log('Congratulations! You beat the computer!')
-    : console.log('You lost! Better luck next time.');    
+    ? console.log(`Congratulations! You beat the computer! ${playerWin} to ${computerWin}!`)
+    : console.log(`You lost ${playerWin} to ${computerWin}. Better luck next time!`);    
     
 }
-
-
-
-//Display the chosen moves of both the user and computer
-//Prompt the user if they would like to play again:
-//If no: end the program
-//If yes: clear the console and run again
