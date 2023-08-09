@@ -1,25 +1,5 @@
 
 
-console.log(playRound());
-
-//Generate the computers choice: rock, paper, or scissors
-    //Generate a number between 0 to 2
-        //Assign 0 to rock
-        //Assign 1 to paper
-        //Assign 2 to scissors
-//Assign the result to variable computerChoice
-
-function getComputerChoice() {
-    let randomChoice = Math.floor(Math.random() * 3);
-
-    if (randomChoice === 0) {
-        return 'rock';
-    } else if (randomChoice === 1) {
-        return 'paper';
-    } else {
-        return 'scissors';
-    }
-}
 // Ask the user for their choice: rock, paper, or scissors
 //Compare user and computers move choice
     //Determine winner
@@ -30,8 +10,30 @@ function getComputerChoice() {
     //If computer wins the round, add 1 to the computers score
     //If there is a tie, play again.
 
+
+game();
 function game() {
 
+    //Generate the computers choice: rock, paper, or scissors
+    //Generate a number between 0 to 2
+        //Assign 0 to rock
+        //Assign 1 to paper
+        //Assign 2 to scissors
+    //Assign the result to variable computerChoice
+
+    function getComputerChoice() {
+        let randomChoice = Math.floor(Math.random() * 3);
+
+        if (randomChoice === 0) {
+            return 'rock';
+        } else if (randomChoice === 1) {
+            return 'paper';
+        } else {
+            return 'scissors';
+        }
+    }
+
+    //Create variables to count the Round number, player wins and computer wins
     var roundCount;
     var playerWin;
     var computerWin;
@@ -40,58 +42,66 @@ function game() {
     //If the player score and computer score are less than 3, keep playing
     //
     for (roundCount = 0, playerWin = 0, computerWin = 0
-        ; roundCount >= 5 || playerWin === 3 || computerWin === 3
+        ; roundCount < 5 && playerWin < 3 && computerWin < 3
         ; ) {
         
-        playRound();
 
-        if () {
+        console.log(playRound());
+        console.log('Round number: ' + roundCount)
+        console.log('Player wins: ' + playerWin)
+        console.log('Computer win: ' + computerWin)
+
+        //Ask the user for their move and determine winner of round against computers move
+        function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
+                 , computerChoice = getComputerChoice()) {
+
+
+            if (playerChoice === computerChoice) {
+                return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
+
+            } else if (playerChoice === 'rock') {
+                if (computerChoice === 'paper') {
+                    computerWin++;
+                    roundCount++;
+                    return 'You lose! Paper beats rock.'; 
+                    
+                } else if (computerChoice === 'scissors'); {
+                    playerWin++;
+                    roundCount++;
+                    return 'You win! Rock beats scissors';
+                }
+
+            } else if (playerChoice === 'paper') {
+                if (computerChoice === 'rock') {
+                    playerWin++;
+                    roundCount++;
+                    return 'You win! Paper beats rock.';
+                } else if (computerChoice === 'scissors'); {
+                    computerWin++;
+                    roundCount++;
+                    return 'You lose! Scissors beats paper.';
+                }
+
+            } else if (playerChoice === 'scissors') {
+                if (computerChoice === 'rock') {
+                    computerWin++;
+                    roundCount++;
+                    return 'You lose! Rock beats scissors.';
+                } else if (computerChoice === 'paper'); {
+                    playerWin++;
+                    roundCount++;
+                    return 'You win! Scissors beat paper.';
+                }
+            } else {
+                return 'Please enter a valid move.'
+            }
+            }
+
 
         }
-
-    }
 }
 
-function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
-         , computerChoice = 'paper') {
 
-    var playerPoint = 0;
-    var computerPoint = 0;
-
-    if (playerChoice === computerChoice) {
-        return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
-
-    } else if (playerChoice === 'rock') {
-        if (computerChoice === 'paper') {
-            computerPoint++;
-            return 'You lose! Paper beats rock.'; 
-            
-        } else if (computerChoice === 'scissors'); {
-            playerPoint++;
-            return 'You win! Rock beats scissors';
-        }
-
-    } else if (playerChoice === 'paper') {
-        if (computerChoice === 'rock') {
-            playerPoint++;
-            return 'You win! Paper beats rock.';
-        } else if (computerChoice === 'scissors'); {
-            computerPoint++;
-            return 'You lose! Scissors beats paper.';
-        }
-
-    } else if (playerChoice === 'scissors') {
-        if (computerChoice === 'rock') {
-            computerPoint++;
-            return 'You lose! Rock beats scissors.';
-        } else if (computerChoice === 'paper'); {
-            playerPoint++;
-            return 'You win! Scissors beat paper.';
-        }
-    } else {
-        return 'Please enter a valid move.'
-    }
-}
 
 //Display the chosen moves of both the user and computer
 //Prompt the user if they would like to play again:
