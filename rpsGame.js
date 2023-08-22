@@ -26,10 +26,19 @@ function game() {
     //Sets the round and scores to 0
     //If the player score and computer score are less than 3, keep playing
     //Once a score of 3 is reached by the computer or player end the loop
-    for (roundCount = 0, playerWin = 0, computerWin = 0
-        ; roundCount < 5 && playerWin < 3 && computerWin < 3
-        ; ) {
+
+    // for (roundCount = 0, playerWin = 0, computerWin = 0
+    //     ; roundCount < 5 && playerWin < 3 && computerWin < 3
+    //     ; ) {
         
+
+    //Add event listeners to each button that call playRound() with the correct playerChoice every time each time a button is clicked.
+    
+    //Console log the player selection
+
+    const btnChoice = document.querySelectorAll('.btn');
+
+    
 
         console.log(playRound());
         console.log('Round number: ' + roundCount);
@@ -39,8 +48,12 @@ function game() {
 
         //Ask the user for their move and generate computers move
         //Determine the winner of the round
-        function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim()
-                 , computerChoice = getComputerChoice()) {
+
+
+
+        function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim(), 
+            computerChoice = getComputerChoice()) {
+                
         console.clear();
             //If there is a draw
             if (playerChoice === computerChoice) {
@@ -84,7 +97,7 @@ function game() {
             }
         }
 
-    }
+    // }
 
     //Display a message to the user stating wether they won or lost the BO5
     let finalWinner = (playerWin === 3)
