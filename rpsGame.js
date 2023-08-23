@@ -2,6 +2,22 @@
 
 
 
+// function clickFunc() {
+//     click = ++click;
+//     testDiv.textContent = 'Clicked: ' + click;
+//     if (click == 3) {
+//         testButton.removeEventListener('click', clickFunc, false);
+//     }
+// }
+
+// let click = 0;
+// const testButton = document.getElementById('test');
+// const testDiv = document.querySelector('.testDiv');
+// testButton.addEventListener('click', clickFunc, false);
+
+
+
+
 
 
 
@@ -42,29 +58,37 @@ function game() {
     const playerWinCount = document.createElement('p');
     const computerWinCount = document.createElement('p');
     const totalRoundCount = document.createElement('p');
+    const winner = document.createElement('p');
+
 
 
     results.appendChild(result);
     results.appendChild(playerWinCount);
     results.appendChild(computerWinCount);
     results.insertBefore(totalRoundCount, playerWinCount);
+    results.appendChild(winner);
 
     playerWinCount.textContent = 'Player Wins: ' + playerWin;
     computerWinCount.textContent = 'Computer Wins: ' + computerWin;
     totalRoundCount.textContent = 'Round Number: ' + roundCount;
 
-
-    buttons.forEach((button) => {
+    let buttonChoice = buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            result.textContent = playRound(button.id)
-            playerWinCount.textContent = 'Player Wins: ' + playerWin;
-            computerWinCount.textContent = 'Computer Wins: ' + computerWin;
-            totalRoundCount.textContent = 'Round Number: ' + roundCount;
+            buttonChoice = button.id;
         });
     });
 
+    buttons.forEach((button) => {
+        button.addEventListener('click', clickPlayRound, false);
+    });
     
 
+    function clickPlayRound() {
+        result.textContent = playRound(buttonChoice);
+        playerWinCount.textContent = 'Player Wins: ' + playerWin;
+        computerWinCount.textContent = 'Computer Wins: ' + computerWin;
+        totalRoundCount.textContent = 'Round Number: ' + roundCount;
+    }
 
     function playRound(playerChoice, computerChoice = getComputerChoice()) {
             
