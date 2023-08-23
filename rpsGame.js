@@ -72,22 +72,31 @@ function game() {
     computerWinCount.textContent = 'Computer Wins: ' + computerWin;
     totalRoundCount.textContent = 'Round Number: ' + roundCount;
 
-    let buttonChoice = buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            buttonChoice = button.id;
-        });
-    });
 
+    let playerChoice;
+    //determine the players move from the button press & play a round of rps when one of the buttons is pressed.
     buttons.forEach((button) => {
+        button.addEventListener('click', () => playerChoice = button.id);
         button.addEventListener('click', clickPlayRound, false);
     });
     
-
+    //function to play round and stop once the player or computer hits 5 wins.
     function clickPlayRound() {
-        result.textContent = playRound(buttonChoice);
+
+        result.textContent = playRound(playerChoice);
         playerWinCount.textContent = 'Player Wins: ' + playerWin;
         computerWinCount.textContent = 'Computer Wins: ' + computerWin;
         totalRoundCount.textContent = 'Round Number: ' + roundCount;
+
+        if (playerWin == 5 || computerWin == 5) {
+            buttons.forEach((button) => button.removeEventListener('click', clickPlayRound, false));
+            result.textContent = 'Game Over!';
+            if (playerWin > computerWin) {
+                winner.textContent = `Congratulations! You beat the computer ${playerWin} to ${computerWin}.`;
+            } else if (computerWin > playerWin) {
+                winner.textContent = `Too bad! The computer won ${computerWin} to ${playerWin}.`;
+            }
+        }
     }
 
     function playRound(playerChoice, computerChoice = getComputerChoice()) {
