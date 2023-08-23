@@ -1,5 +1,10 @@
 //Play a best of 5 game that keeps score and reports a winner or loser at the end.
 
+
+
+
+
+
 game();
 
 function game() {
@@ -23,38 +28,33 @@ function game() {
     var playerWin;
     var computerWin;
 
-    //Sets the round and scores to 0
-    //If the player score and computer score are less than 3, keep playing
-    //Once a score of 3 is reached by the computer or player end the loop
 
     // for (roundCount = 0, playerWin = 0, computerWin = 0
     //     ; roundCount < 5 && playerWin < 3 && computerWin < 3
     //     ; ) {
-        
-
-    //Add event listeners to each button that call playRound() with the correct playerChoice every time each time a button is clicked.
     
     //Console log the player selection
 
-    const btnChoice = document.querySelectorAll('.btn');
-
-    
-
-        console.log(playRound());
-        console.log('Round number: ' + roundCount);
-        console.log('Player wins: ' + playerWin);
-        console.log('Computer win: ' + computerWin);
+        // console.log(playRound());
+        // console.log('Round number: ' + roundCount);
+        // console.log('Player wins: ' + playerWin);
+        // console.log('Computer win: ' + computerWin);
 
 
-        //Ask the user for their move and generate computers move
-        //Determine the winner of the round
+        const buttons = document.querySelectorAll('button');
+        const result = document.querySelector('.result')
+
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                result.textContent = playRound(button.id);
+            });
+        });
 
 
 
-        function playRound(playerChoice = prompt('Choose: Rock, Paper, or Scissors').toLowerCase().trim(), 
-            computerChoice = getComputerChoice()) {
+        function playRound(playerChoice, computerChoice = getComputerChoice()) {
                 
-        console.clear();
             //If there is a draw
             if (playerChoice === computerChoice) {
                 return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
@@ -100,8 +100,8 @@ function game() {
     // }
 
     //Display a message to the user stating wether they won or lost the BO5
-    let finalWinner = (playerWin === 3)
-    ? console.log(`Congratulations! You beat the computer! ${playerWin} to ${computerWin}!`)
-    : console.log(`You lost ${playerWin} to ${computerWin}. Better luck next time!`);    
+    // let finalWinner = (playerWin === 3)
+    // ? console.log(`Congratulations! You beat the computer! ${playerWin} to ${computerWin}!`)
+    // : console.log(`You lost ${playerWin} to ${computerWin}. Better luck next time!`);    
     
 }
