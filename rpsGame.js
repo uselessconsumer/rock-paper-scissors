@@ -1,31 +1,26 @@
 //Play a best of 5 game that keeps score and reports a winner or loser at the end.
 
+game(function() {
 
+    const newGame = document.querySelector('.newGame');
+    const newGamePrompt = document.createElement('p');
+    const newGameBtn = document.createElement('button');
 
-// function clickFunc() {
-//     click = ++click;
-//     testDiv.textContent = 'Clicked: ' + click;
-//     if (click == 3) {
-//         testButton.removeEventListener('click', clickFunc, false);
-//     }
-// }
+    newGamePrompt.textContent = 'Click Here to Start a New Game:';
+    newGameBtn.textContent = 'New Game';
 
-// let click = 0;
-// const testButton = document.getElementById('test');
-// const testDiv = document.querySelector('.testDiv');
-// testButton.addEventListener('click', clickFunc, false);
+    newGame.appendChild(newGamePrompt);
+    newGame.appendChild(newGameBtn);
 
+    newGameBtn.addEventListener('click', game);
 
-
-
+});
 
 
 
-game();
 
-function game() {
 
-    //Generate the computers choice: rock, paper, or scissors
+function game(gameOver) {
 
     function getComputerChoice() {
         let randomChoice = Math.floor(Math.random() * 3);
@@ -39,27 +34,19 @@ function game() {
         }
     }
 
-    // for (roundCount = 0, playerWin = 0, computerWin = 0
-    //     ; roundCount < 5 && playerWin < 3 && computerWin < 3
-    //     ; ) {
-    //         console.log('Round number: ' + roundCount);
-    //         console.log('Player wins: ' + playerWin);
-    //         console.log('Computer win: ' + computerWin);
-    //     };
-
     var roundCount = 0;
     var playerWin = 0;
     var computerWin = 0;
 
     const buttons = document.querySelectorAll('button');
 
+    //creates multiple p within results div
     const results = document.querySelector('.results')
     const result = document.createElement('p');
     const playerWinCount = document.createElement('p');
     const computerWinCount = document.createElement('p');
     const totalRoundCount = document.createElement('p');
     const winner = document.createElement('p');
-
 
 
     results.appendChild(result);
@@ -93,15 +80,16 @@ function game() {
             result.textContent = 'Game Over!';
             if (playerWin > computerWin) {
                 winner.textContent = `Congratulations! You beat the computer ${playerWin} to ${computerWin}.`;
+                gameOver();
             } else if (computerWin > playerWin) {
                 winner.textContent = `Too bad! The computer won ${computerWin} to ${playerWin}.`;
+                gameOver();
             }
         }
     }
 
     function playRound(playerChoice, computerChoice = getComputerChoice()) {
             
-        //If there is a draw
         if (playerChoice === computerChoice) {
             return `Draw! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} ties with ${computerChoice}.`;
 
@@ -141,11 +129,6 @@ function game() {
         } else {
             return 'Please enter a valid move.'
         }
-    }
-
-    //Display a message to the user stating wether they won or lost the BO5
-    // let finalWinner = (playerWin === 3)
-    // ? console.log(`Congratulations! You beat the computer! ${playerWin} to ${computerWin}!`)
-    // : console.log(`You lost ${playerWin} to ${computerWin}. Better luck next time!`);    
+    } 
     
 }
