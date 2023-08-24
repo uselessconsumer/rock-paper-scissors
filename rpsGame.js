@@ -12,15 +12,15 @@ game(function() {
     newGame.appendChild(newGamePrompt);
     newGame.appendChild(newGameBtn);
 
-    newGameBtn.addEventListener('click', game);
+    newGameBtn.addEventListener('click', () => {
+        location.reload();
+    });
 
 });
 
 
 
-
-
-function game(gameOver) {
+function game(gameOver) {  
 
     function getComputerChoice() {
         let randomChoice = Math.floor(Math.random() * 3);
@@ -34,11 +34,11 @@ function game(gameOver) {
         }
     }
 
+    const buttons = document.getElementById('rps').querySelectorAll('button');
+
     var roundCount = 0;
     var playerWin = 0;
     var computerWin = 0;
-
-    const buttons = document.querySelectorAll('button');
 
     //creates multiple p within results div
     const results = document.querySelector('.results')
@@ -47,18 +47,17 @@ function game(gameOver) {
     const computerWinCount = document.createElement('p');
     const totalRoundCount = document.createElement('p');
     const winner = document.createElement('p');
-
-
+    
     results.appendChild(result);
     results.appendChild(playerWinCount);
     results.appendChild(computerWinCount);
     results.insertBefore(totalRoundCount, playerWinCount);
     results.appendChild(winner);
-
+    
     playerWinCount.textContent = 'Player Wins: ' + playerWin;
     computerWinCount.textContent = 'Computer Wins: ' + computerWin;
     totalRoundCount.textContent = 'Round Number: ' + roundCount;
-
+    
 
     let playerChoice;
     //determine the players move from the button press & play a round of rps when one of the buttons is pressed.
@@ -81,9 +80,11 @@ function game(gameOver) {
             if (playerWin > computerWin) {
                 winner.textContent = `Congratulations! You beat the computer ${playerWin} to ${computerWin}.`;
                 gameOver();
+                return;
             } else if (computerWin > playerWin) {
                 winner.textContent = `Too bad! The computer won ${computerWin} to ${playerWin}.`;
                 gameOver();
+                return;
             }
         }
     }
