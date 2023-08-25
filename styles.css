@@ -20,7 +20,7 @@ body {
 #rps {
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 50px;
+    margin: 10px 100px;
 }
 
 button {
